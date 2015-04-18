@@ -6,7 +6,7 @@ machine:
 test:
   post:
     - docker build -t sugi/ruby-rpm .
-    - docker run -v $PWD:/shared:rw sugi/ruby-rpm /bin/sh ./rubybuild.sh
+    - docker run -v $CIRCLE_ARTIFACTS:/shared:rw sugi/ruby-rpm /bin/sh ./rubybuild.sh
 general:
   artifacts:
-    - /shared/*
+    - "*.rpm"
