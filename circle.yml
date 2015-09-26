@@ -5,8 +5,10 @@ machine:
     - docker
 test:
   post:
-    - docker build -t sugi/ruby-rpm .
-    - docker run -v $CIRCLE_ARTIFACTS:/shared:rw sugi/ruby-rpm /bin/sh ./rubybuild.sh
+    - docker build -t ruby-rpm .
+    - docker run -v ruby-rpm
+    - id=$( docker run -d ruby-rpm )
+    - docker cp $id:/var/tmp/rpmbuild/RPMS/x86_64/* $CIRCLE_ARTIFACTS
 general:
   artifacts:
     - "*.rpm"
