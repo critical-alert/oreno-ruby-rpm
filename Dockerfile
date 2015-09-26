@@ -12,5 +12,5 @@ RUN yum -y install readline-devel ncurses-devel gdbm-devel glibc-devel gcc opens
 RUN mkdir -p /var/tmp/rpmbuild/{BUILD,BUILDROOT,RPMS,SOURCES,SPECS,SRPMS}
 WORKDIR /var/tmp/rpmbuild
 ADD http://cache.ruby-lang.org/pub/ruby/2.2/ruby-2.2.3.tar.gz ./SOURCES
-COPY ruby22x.spec /var/tmp/rpmbuild/SPECS/ruby22x.spec
+COPY ruby22x.spec ./SPECS/ruby22x.spec
 CMD ["rpmbuild", "-ba", "./SPECS/ruby22x.spec"]
