@@ -13,4 +13,4 @@ RUN mkdir -p /var/tmp/rpmbuild/{BUILD,BUILDROOT,RPMS,SOURCES,SPECS,SRPMS}
 WORKDIR /var/tmp/rpmbuild
 ADD http://cache.ruby-lang.org/pub/ruby/2.2/ruby-2.2.3.tar.gz SOURCES/
 COPY ruby22x.spec ./SPECS/ruby22x.spec
-CMD ["rpmbuild", "-ba", "./SPECS/ruby22x.spec"]
+CMD ["rpmbuild", "-ba", "/var/tmp/rpmbuild/SPECS/ruby22x.spec"]
