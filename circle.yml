@@ -6,7 +6,7 @@ machine:
 test:
   post:
     - docker build -t ruby-rpm .
-    - docker run -v ruby-rpm
+    - docker run -i ruby-rpm
     - id=$( docker run -d ruby-rpm )
     - docker cp $id:/var/tmp/rpmbuild/RPMS/x86_64/* $CIRCLE_ARTIFACTS
 general:
