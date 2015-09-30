@@ -17,9 +17,8 @@ RUN chown rpmbuilder:rpmbuilder /home/rpmbuilder/rpmbuild/{BUILD,BUILDROOT,RPMS,
 WORKDIR /home/rpmbuilder/rpmbuild
 ADD http://cache.ruby-lang.org/pub/ruby/2.2/ruby-2.2.3.tar.gz SOURCES/
 COPY ruby22x.spec SPECS/ruby22x.spec
-#CMD ["rpmbuild", "-ba", "/var/tmp/rpmbuild/SPECS/ruby22x.spec"]
 RUN chmod 777 /home/rpmbuilder/rpmbuild/SOURCES/*
 
 # build
 USER rpmbuilder
-CMD rpmbuild -ba /home/rpmbuilder/rpmbuild/SPECS/ruby22x.spec
+CMD ["rpmbuild", "-ba", "/home/rpmbuilder/rpmbuild/SPECS/ruby22x.spec"]
