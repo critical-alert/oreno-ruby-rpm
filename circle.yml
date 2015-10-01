@@ -7,7 +7,7 @@ test:
   post:
     - docker build -t ruby-rpm .
     - docker run -i ruby-rpm
-    - id=$( docker run -d ruby-rpm )
+    - id=$( docker ps -l -q )
     - docker cp $id:/home/rpmbuilder/rpmbuild/RPMS/x86_64/. $CIRCLE_ARTIFACTS
 general:
   artifacts:
