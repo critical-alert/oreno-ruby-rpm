@@ -15,6 +15,6 @@ jobs:
           command: docker run -i ruby-rpm
       - run:
           name: extract rpm
-          command: docker cp `docker ps -l -q`:/home/rpmbuilder/rpmbuild/RPMS/x86_64/. ./
+          command: docker cp `docker ps -l -q`:/home/rpmbuilder/rpmbuild/RPMS/x86_64 ./
       - store_artifacts:
-          path: ./*.rpm
+          path: /home/circleci/oreno-ruby-rpm/x86_64
