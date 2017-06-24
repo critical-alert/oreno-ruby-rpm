@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: ruby:2.4.1-alpine
+      - image: circleci/ruby
     working_directory: /home/circleci/oreno-ruby-rpm
     steps:
       - checkout
