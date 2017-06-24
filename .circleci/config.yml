@@ -1,0 +1,20 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: ruby:2.4.1-alpine
+    working_directory: /home/circleci/oreno-ruby-rpm
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: docker build
+          command: docker build -t ruby-rpm .
+      - run:
+          name: docker run
+          command: docker run -i ruby-rpm
+      - run:
+          name: extract rpm
+          command: docker cp `docker ps -l -q`:/home/rpmbuilder/rpmbuild/RPMS/x86_64/. ./
+      - store_artifacts:
+          path: ./*.rpm
